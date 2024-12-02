@@ -1,7 +1,6 @@
 import * as PIXI from "./webworker-v8.6.2.mjs";
 
-self.imageURL = "face.png";
-self.basePath = "http://localhost:3000/";
+self.imageURL = "/face.png";
 self.pixi = {spr:null};
 
 self.initApp = async (offscreen)=>{
@@ -9,7 +8,6 @@ self.initApp = async (offscreen)=>{
   self.pixi.app = new PIXI.Application();
   await self.pixi.app.init({canvas:offscreen, width:1000,height:800});
   self.pixi.container = new PIXI.Container();
-  await PIXI.Assets.init({basePath:self.basePath});
   self.pixi.tex = await PIXI.Assets.load(self.imageURL);
   self.pixi.spr = new PIXI.Sprite(self.pixi.tex);
   self.pixi.spr.anchor.set(0.5);
