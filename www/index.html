@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="jp">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>pixi-worker test</title>
+</head>
+<body>
+<canvas id="cv"></canvas>
+<script type="module">
+const $cv = document.querySelector("#cv");
+const offscreen = $cv.transferControlToOffscreen();
+const w = new Worker("./w.mjs",{type:"module"});
+w.postMessage(offscreen,[offscreen]);
+</script>
+</body>
+</html>
